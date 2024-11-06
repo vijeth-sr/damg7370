@@ -1,0 +1,53 @@
+{
+	"name": "ds_snowflake_stage_spl",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_Snowflake_demo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeV2Table",
+		"schema": [
+			{
+				"name": "LICENSE_ISSUE_DATE",
+				"type": "TIMESTAMP_NTZ"
+			},
+			{
+				"name": "LICENSE_NUMBER",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "ANIMAL_S_NAME",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "SPECIES",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "PRIMARY_BREED",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "SECONDARY_BREED",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "ZIP_CODE",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "DI_CREATED_DATE",
+				"type": "TIMESTAMP_NTZ"
+			},
+			{
+				"name": "DI_JOB_ID",
+				"type": "VARCHAR"
+			}
+		],
+		"typeProperties": {
+			"schema": "STAGE",
+			"table": "SEATTLEPETLICENSES"
+		}
+	}
+}
