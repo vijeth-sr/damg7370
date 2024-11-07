@@ -5,6 +5,8 @@
 			{
 				"name": "Copy 2_silver_parquet",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -35,27 +37,19 @@
 							"type": "ParquetWriteSettings"
 						}
 					},
-					"enableStaging": true,
-					"stagingSettings": {
-						"linkedServiceName": {
-							"referenceName": "ls_blob_damg",
-							"type": "LinkedServiceReference"
-						},
-						"path": ""
-					},
+					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
 							{
 								"source": {
 									"name": "License Issue Date",
-									"type": "DateTime",
+									"type": "Date",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "LICENSE_ISSUE_DATE",
-									"type": "DateTime",
-									"physicalType": "TIMESTAMP_NTZ"
+									"name": "LicenseIssueDate",
+									"physicalType": "UTF8"
 								}
 							},
 							{
@@ -65,9 +59,8 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "LICENSE_NUMBER",
-									"type": "String",
-									"physicalType": "VARCHAR"
+									"name": "LicenseNumber",
+									"physicalType": "UTF8"
 								}
 							},
 							{
@@ -77,9 +70,8 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "ANIMAL_S_NAME",
-									"type": "String",
-									"physicalType": "VARCHAR"
+									"name": "AnimalsName",
+									"physicalType": "UTF8"
 								}
 							},
 							{
@@ -89,9 +81,9 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "SPECIES",
+									"name": "Species",
 									"type": "String",
-									"physicalType": "VARCHAR"
+									"physicalType": "UTF8"
 								}
 							},
 							{
@@ -101,9 +93,8 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PRIMARY_BREED",
-									"type": "String",
-									"physicalType": "VARCHAR"
+									"name": "PrimaryBreed",
+									"physicalType": "UTF8"
 								}
 							},
 							{
@@ -113,9 +104,8 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "SECONDARY_BREED",
-									"type": "String",
-									"physicalType": "VARCHAR"
+									"name": "SecondaryBreed",
+									"physicalType": "UTF8"
 								}
 							},
 							{
@@ -125,9 +115,8 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "ZIP_CODE",
-									"type": "String",
-									"physicalType": "VARCHAR"
+									"name": "ZIPCode",
+									"physicalType": "UTF8"
 								}
 							}
 						],
@@ -157,8 +146,6 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy 2_silver_parquet",
@@ -227,7 +214,7 @@
 								},
 								"sink": {
 									"name": "LICENSE_ISSUE_DATE",
-									"type": "DateTime"
+									"type": "String"
 								}
 							},
 							{

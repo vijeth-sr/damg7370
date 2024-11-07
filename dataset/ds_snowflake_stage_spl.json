@@ -10,7 +10,7 @@
 		"schema": [
 			{
 				"name": "LICENSE_ISSUE_DATE",
-				"type": "TIMESTAMP_NTZ"
+				"type": "VARCHAR"
 			},
 			{
 				"name": "LICENSE_NUMBER",
