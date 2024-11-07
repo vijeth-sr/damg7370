@@ -1,0 +1,49 @@
+{
+	"name": "read_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_damg7370",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "68511b2a-b9f3-469d-b6ec-2ce485796b14.parquet",
+				"fileSystem": "silver"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "LICENSE_ISSUE_DATE",
+				"type": "UTF8"
+			},
+			{
+				"name": "LICENSE_NUMBER",
+				"type": "UTF8"
+			},
+			{
+				"name": "ANIMAL_S_NAME",
+				"type": "UTF8"
+			},
+			{
+				"name": "SPECIES",
+				"type": "UTF8"
+			},
+			{
+				"name": "PRIMARY_BREED",
+				"type": "UTF8"
+			},
+			{
+				"name": "SECONDARY_BREED",
+				"type": "UTF8"
+			},
+			{
+				"name": "ZIP_CODE",
+				"type": "UTF8"
+			}
+		]
+	}
+}
