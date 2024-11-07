@@ -5,8 +5,6 @@
 			{
 				"name": "Copy 2_silver_parquet",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -146,8 +144,6 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy 2_silver_parquet",
@@ -318,7 +314,14 @@
 			{
 				"name": "Loading_Breed_DIm",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -336,6 +339,40 @@
 								"value": "'@{pipeline().RunId}'",
 								"type": "Expression"
 							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Loading_Location_Dim",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Loading_Breed_DIm",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Loading_Location_Dim",
+						"type": "DataFlowReference",
+						"parameters": {
+							"DI_JOB_ID": "\"59\""
 						}
 					},
 					"compute": {
