@@ -1,0 +1,9 @@
+{
+	"name": "adwntureworkslt-damg",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "86abc3c9-1594-4643-9be9-d070086471f9",
+		"tenantId": "a8eec281-aaa3-4dae-ac9b-9a398b9215e7"
+	}
+}
